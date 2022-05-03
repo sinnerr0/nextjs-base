@@ -6,19 +6,46 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "run-s lint:next lint:stylelint lint:prettier",
+    "lint:fix": "run-s lint:next:fix lint:stylelint:fix lint:prettier:fix",
+    "lint:next": "next lint",
+    "lint:next:fix": "next lint --fix",
+    "lint:prettier": "prettier --check .",
+    "lint:prettier:fix": "prettier --write .",
+    "lint:stylelint": "stylelint ./**/*.{css,scss}",
+    "lint:stylelint:fix": "stylelint --fix ./**/*.{css,scss}",
+    "prepare": "husky install"
   },
   "dependencies": {
     "next": "12.1.6",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "tw-elements": "^1.0.0-alpha12"
   },
   "devDependencies": {
     "@types/node": "17.0.31",
     "@types/react": "18.0.8",
     "@types/react-dom": "18.0.3",
+    "autoprefixer": "^10.4.7",
+    "cross-env": "^7.0.3",
+    "cssnano": "^5.1.7",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.6",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-tailwindcss": "^3.5.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.4.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.13",
+    "prettier": "^2.6.2",
+    "stylelint": "^14.8.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-config-tailwindcss": "^0.0.3",
+    "stylelint-scss": "^4.2.0",
+    "tailwindcss": "^3.0.24",
     "typescript": "4.6.4"
   }
 }

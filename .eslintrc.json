@@ -1,3 +1,6 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended", "prettier"],
+  "rules": {
+    "tailwindcss/no-custom-classname": 0 // tw-elements의 custom classname 정의를 모두 하긴 힘들어 warn이 뜨지만 off 하였습니다.
+  }
 }
