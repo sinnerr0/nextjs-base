@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && next export -o dist",
+    "start": "next build && next start",
     "lint": "run-s lint:next lint:stylelint lint:prettier",
     "lint:fix": "run-s lint:next:fix lint:stylelint:fix lint:prettier:fix",
     "lint:next": "next lint",
