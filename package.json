@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8000",
     "build": "next build && next export -o dist",
-    "start": "next build && next start",
+    "start": "next build && next start -p 8000",
     "lint": "run-s lint:next lint:stylelint lint:prettier",
     "lint:fix": "run-s lint:next:fix lint:stylelint:fix lint:prettier:fix",
     "lint:next": "next lint",

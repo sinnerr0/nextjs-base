@@ -1,7 +1,4 @@
-const route = {
-  ROUTE: {
-    SIGNUP: "/signup",
-  },
+export const ROUTE = {
+  SIGNUP: "/signup",
+  ADMIN: "/admin",
 };
-
-export default route;
