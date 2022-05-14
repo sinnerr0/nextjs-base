@@ -52,4 +52,4 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 ├ styles : stylesheets
 </pre>
 
-![next.js front overview.drawio.png](docs/next.js front overview.drawio.png)
+![next.js front overview.drawio.png](docs/next.js-front-overview.drawio.png)
