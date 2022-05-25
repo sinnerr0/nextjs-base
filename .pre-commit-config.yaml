@@ -1,0 +1,12 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+      - id: trailing-whitespace # 끝 공백을 전부 제거해줍니다.
+      - id: end-of-file-fixer # EOL(end of line) 자동생성
+      - id: check-yaml # yaml 파일 틀린 포맷 검사
+
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v1.3.0
+    hooks:
+      - id: conventional-pre-commit

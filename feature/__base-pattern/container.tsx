@@ -1,13 +1,13 @@
-import { useGetTest } from "../../service/tempService";
+import { getTest, Test } from "../../service/temp-service";
 import React, { ComponentType } from "react";
-import { AppInitialProps } from "next/app";
+import { useQuery } from "react-query";
+import { PageProps } from "../../pages/_app";
 
-export type Props = ReturnType<typeof useGetTest>;
-export type PageProps = {} | AppInitialProps;
+export type Props = ReturnType<typeof useQuery>;
 
 export function withContainer(WrappedComponent: ComponentType<Props>) {
-  return function Page(props: PageProps) {
-    const result = useGetTest(0);
+  return function Page(_: PageProps) {
+    const result = useQuery<Test, Error>(["temp-service/test", 0], () => getTest(0));
     return <WrappedComponent {...result} />;
   };
 }

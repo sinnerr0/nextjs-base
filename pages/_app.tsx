@@ -8,6 +8,8 @@ import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider, Hydrate } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
+export type PageProps = {};
+
 const queryClient = new QueryClient({
   defaultOptions: {
     // 의도치 않은 fetch 발생으로 인하여 서버 요청 부하를 줄이기 위한 설정

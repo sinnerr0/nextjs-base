@@ -1,17 +1,24 @@
-import { useGetTest } from "../../service/tempService";
+import { getTest, Test } from "../../service/temp-service";
 import React, { ComponentType, useCallback } from "react";
-import { useQueryClient } from "react-query";
-import { AppInitialProps } from "next/app";
+import { useQuery, useQueryClient } from "react-query";
+import { PageProps } from "../../pages/_app";
 
-export type Props = { invalidate: () => void } & ReturnType<typeof useGetTest>;
-
-export type PageProps = {} | AppInitialProps;
+export type Props = { invalidate: () => void } & ReturnType<typeof useQuery>;
 
 export function withContainer(WrappedComponent: ComponentType<Props>) {
   return function Signup(props: PageProps) {
-    const result = useGetTest(0);
+    const result = useQuery<Test, Error>(["temp-service/test", 0], () => getTest(0));
     const queryClient = useQueryClient();
-    const invalidate = useCallback(() => queryClient.invalidateQueries(["tempService/test", 0]), [queryClient]);
-    return <WrappedComponent {...result} invalidate={invalidate} />;
+    const invalidate = useCallback(() => {
+      queryClient.invalidateQueries(["temp-service/test", 0]);
+    }, [queryClient]);
+
+    const passProps = {
+      ...props,
+      ...result,
+      invalidate,
+    };
+
+    return <WrappedComponent {...passProps} />;
   };
 }

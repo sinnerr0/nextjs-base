@@ -1,11 +1,10 @@
 {
-  "name": "family-frontend-base",
-  "version": "0.1.0",
+  "name": "family-frontend-admin",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev -p 8000",
-    "build": "next build && next export -o dist",
-    "start": "next build && next start -p 8000",
+    "build": "next build && next export -o dist && next-export-optimize-images",
     "lint": "run-s lint:next lint:stylelint lint:prettier",
     "lint:fix": "run-s lint:next:fix lint:stylelint:fix lint:prettier:fix",
     "lint:next": "next lint",
@@ -14,7 +13,16 @@
     "lint:prettier:fix": "prettier --write .",
     "lint:stylelint": "stylelint ./**/*.{css,scss}",
     "lint:stylelint:fix": "stylelint --fix ./**/*.{css,scss}",
+    "release:first": "standard-version -f -t ''",
+    "release:major": "standard-version -t '' -r major && git push -u origin release && git push --follow-tags",
+    "release:minor": "standard-version -t '' -r minor && git push -u origin release && git push --follow-tags",
+    "release:patch": "standard-version -t '' -r patch && git push -u origin release && git push --follow-tags",
     "prepare": "husky install"
+  },
+  "standard-version": {
+    "skip": {
+      "changelog": true
+    }
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -22,6 +30,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-query": "^3.39.0",
+    "standard-version": "^9.3.2",
     "tw-elements": "^1.0.0-alpha12"
   },
   "devDependencies": {
@@ -38,9 +47,11 @@
     "eslint-plugin-tailwindcss": "^3.5.0",
     "husky": "^7.0.0",
     "lint-staged": "^12.4.1",
+    "next-export-optimize-images": "^1.0.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.13",
     "prettier": "^2.6.2",
+    "regenerator-runtime": "^0.13.9",
     "stylelint": "^14.8.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^25.0.0",
